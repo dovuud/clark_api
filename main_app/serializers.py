@@ -24,6 +24,10 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PostSerializer(serializers.ModelSerializer):
+    tags = TagSerializer(many=True, read_only=True)
+    categories = CategorySerializer(many=True, read_only=True)
+    authors = AuthorSerializer(many=True, read_only=True)
+    comments = CommentSerializer(many=True, read_only=True)
     class Meta:
         model = Post
         fields = '__all__'
@@ -63,6 +67,13 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = '__all__'
+
+
+
+
+
+
+
 
 # class HomeSerializer(serializers.ModelSerializer):
 #     about = AboutSerializer(many=True, read_only=True)
